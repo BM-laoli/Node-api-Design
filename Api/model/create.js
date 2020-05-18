@@ -2,7 +2,6 @@
 
  const bcrypt = require('bcrypt')
 
-
  /*使用MongDB数据库，设计数据第一步（代码角度分析）
  1.设定规则,Schema构造器,Schema的构造函数就是规则，注意规则是一系列对象
  2.创建数据
@@ -44,7 +43,7 @@
 
  async function createUser() {
      const salt = await bcrypt.genSalt(10)
-     const pass = await bcrypt.hash('123456', salt)
+     const pass = await bcrypt.hash('123456', salt)//使用盐进行加密，加密的字段就是
      const user = await User.create({
          username: 'lli',
          email: '18376621755@163.com',
@@ -53,9 +52,7 @@
          state: 0,
      })
  }
-
-
- //  createUser()
+ //  createUser()，初始化我们的用户就好了
 
 
 

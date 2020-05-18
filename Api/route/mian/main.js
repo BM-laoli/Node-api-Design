@@ -18,4 +18,7 @@ admin.post('/login', guard)
 //首先要验证，然后才是放行到对应的路由接口里面取
 admin.get('/text', require('./API/home/index'))
 
+
+
+
 module.exports = admin;
