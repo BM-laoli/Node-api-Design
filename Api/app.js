@@ -18,6 +18,9 @@ require('./model/create')
 
 //前往小心这个要放在所有的use前面，解析我们的post请求数据
 app.use(bodyPaser.urlencoded({ extended: false }));
+app.use(express.json())//第二种处理post使用json的方式转化post数据
+
+
 //处理静态资源路径
 const DataPath = path.join(__dirname, 'public');
 //这个我们后面是有用的，用来操作媒体数据，最重要的就是这个路径还有这个静态资源对象
@@ -32,6 +35,7 @@ app.use('/dataPath', (req, res) => {
     res.status(200).send(JSON.stringify({ 'dataPath': DataPath }))
 })
 app.use(StaticUtils);
+//路由配置
 app.use('/main', main)
 
 

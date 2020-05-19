@@ -1,0 +1,58 @@
+@uri  = http://localhost:3000/main/CRUD
+@toke = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNWU5MTIwMTViOWI0NmYzZmE4Y2MzMjUzIiwiZXhwIjoxNTg5ODU0NTI5LCJpYXQiOjE1ODk4NTI3Mjl9.U0N1bZLUBiy2fmz1NqAF-tTelE7uO8Xld4HHFeBsbq7iY5rSNMByYUyxhC1k8ug9n_8XzChL81ruiFuwxIcOg7DXk_hdrnvpUgwwtjIPjn4kfWWVEsZGm456fo3L5cHfppOTWH5NQAtKEd7xwrhqPrEPsBUwAc7pKEAFDaGuFOc
+
+### 
+GET  http://localhost:3000/main/test
+
+### 进行token校验拿到我们的token，只有拿到token之后才允许进入下面的请求环节
+
+POST http://localhost:3000/main/login
+Content-Type: application/json
+
+{
+    "email":"18376621755@163.com",
+    "password":"123456"
+}
+
+
+### 我们需要携带token才能发起其它的请求
+GET {{uri}}/test
+Authorization: {{toke}}
+
+
+### 增
+POST  {{uri}}/Article/
+Content-Type: application/json
+Authorization:{{toke}}
+
+{
+    "title":"分类测试3",
+    "body":"<h1>你好我是标题2</h1>"
+}
+
+### 删
+DELETE {{uri}}/Article/5ec330fe21d3d97d5054e5bf
+Authorization: {{toke}}
+
+### 改
+PUT   {{uri}}/Article/5ec32f60cd080550a4e2fba8
+Content-Type: application/json
+Authorization:{{toke}}
+
+{
+    "title":"修改测试--222",
+    "body":"<h1>你好我是标题2</h1>"
+}
+
+
+
+### 查
+GET {{uri}}/Article
+Authorization:{{toke}}
+
+### 查 根据id查
+### 特别小心由于你在后台使用了express的动态路由，所以你不必加id=xxx
+GET {{uri}}/Article/5ec32f60cd080550a4e2fba8
+Content-Type: application/json
+Authorization:{{toke}}
+

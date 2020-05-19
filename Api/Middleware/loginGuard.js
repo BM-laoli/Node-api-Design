@@ -4,11 +4,13 @@ const bcrypt = require('bcrypt')
 
 
 const guard = async(req, res, next) => {
+    
+
     //注意使用第三方模块处理post
     //进图具体的业务逻辑，解构出来我们需要的东西
     const { email, password, _id } = req.body; //注意啊，由于我们的中间件处理的请求于是乎我们的req身上就有这个处理的所有数据了，这个之前有说过
 
-    console.log(req.body);
+
 
     if (email.trim().length == 0 || password.trim().length == 0) {
         res.status(400).send(
