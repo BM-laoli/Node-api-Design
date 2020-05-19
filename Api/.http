@@ -1,5 +1,6 @@
-@uri  = http://localhost:3000/main/CRUD
-@toke = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNWU5MTIwMTViOWI0NmYzZmE4Y2MzMjUzIiwiZXhwIjoxNTg5ODU0NTI5LCJpYXQiOjE1ODk4NTI3Mjl9.U0N1bZLUBiy2fmz1NqAF-tTelE7uO8Xld4HHFeBsbq7iY5rSNMByYUyxhC1k8ug9n_8XzChL81ruiFuwxIcOg7DXk_hdrnvpUgwwtjIPjn4kfWWVEsZGm456fo3L5cHfppOTWH5NQAtKEd7xwrhqPrEPsBUwAc7pKEAFDaGuFOc
+@uri  = http://localhost:3000/main/CRUD/rest
+@toke = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNWU5MTIwMTViOWI0NmYzZmE4Y2MzMjUzIiwiZXhwIjoxNTg5ODU3MTU4LCJpYXQiOjE1ODk4NTUzNTh9.xiY6bFTFKjfHecYu3QVCSim9Z1EjMHcFjiFCF-y6PVndLh_oVOZ0IiynftwT6nM4d0woiLedQ1FISeWA8nBjAhdYBAJi9wY9yr8mXtQmcZF620acLGd2BcJtQG22lDF_vVcAi4-Ce8aIeYfxXB9-TwLZaJLFLT_RleKd-SQSQ-U
+@databMolde = products
 
 ### 
 GET  http://localhost:3000/main/test
@@ -21,21 +22,21 @@ Authorization: {{toke}}
 
 
 ### 增
-POST  {{uri}}/Article/
+POST  {{uri}}/{{databMolde}}
 Content-Type: application/json
 Authorization:{{toke}}
 
 {
-    "title":"分类测试3",
-    "body":"<h1>你好我是标题2</h1>"
+    "product_name":"MUI 9",
+    "category":"mobiles"
 }
 
 ### 删
-DELETE {{uri}}/Article/5ec330fe21d3d97d5054e5bf
+DELETE {{uri}}/{{databMolde}}/5ec344f3fba44579c45675cc
 Authorization: {{toke}}
 
 ### 改
-PUT   {{uri}}/Article/5ec32f60cd080550a4e2fba8
+PUT   {{uri}}/{{databMolde}}/5ec32f60cd080550a4e2fba8
 Content-Type: application/json
 Authorization:{{toke}}
 
@@ -47,12 +48,12 @@ Authorization:{{toke}}
 
 
 ### 查
-GET {{uri}}/Article
+GET {{uri}}/{{databMolde}}
 Authorization:{{toke}}
 
 ### 查 根据id查
 ### 特别小心由于你在后台使用了express的动态路由，所以你不必加id=xxx
-GET {{uri}}/Article/5ec32f60cd080550a4e2fba8
+GET {{uri}}/{{databMolde}}/5ec32f60cd080550a4e2fba8
 Content-Type: application/json
 Authorization:{{toke}}
 
